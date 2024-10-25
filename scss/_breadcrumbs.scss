@@ -1,0 +1,25 @@
+@import 'settings/var';
+@import 'settings/mixins';
+
+.breadcrumbs {
+  a {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 14px;
+    color: $colorBread;
+    text-decoration: none;
+    transition: .2s ease-in;
+    &:before {
+      font-size: 24px;
+    }
+    span {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+    &:hover {
+      color: $colorRed;
+    }
+  }
+}

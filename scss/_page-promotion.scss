@@ -1,0 +1,103 @@
+@import 'settings/var';
+@import 'settings/mixins';
+.page_promotion {
+  &__back_header {
+    background-image: url('../img/background/back-promotion.jpg');
+    min-height: 302px;
+    @media screen and (max-width: 1200px) {
+      min-height: 283px;
+    }
+    @media screen and (max-width: 1024px) {
+      min-height: 228px;
+    }
+    @media screen and (max-width: 920px) {
+      min-height: 171px;
+      @include soft-ends(30px);
+    }
+    @media screen and (max-width: 768px) {
+      min-height: 51px;
+    }
+  }
+  &__container {
+    @include sectionPadding;
+    .items {
+      @include flexColumn(100px);
+      @media screen and (max-width: 768px) {
+        gap: 60px;
+      }
+      .item {
+        @include flexColumn(25px);
+        align-items: start;
+        color: $colorBackBlack;
+        line-height: 1.5;
+        @media screen and (max-width: 768px) {
+          font-size: .9em;
+        }
+        @media screen and (max-width: 500px) {
+          font-size: .8em;
+        }
+        .banner {
+          img {
+            @include img(max-content);
+            border-radius: 1.875em;
+          }
+        }
+        .title {
+          font-family: 'Rubik One';
+          font-size: 2.25em;
+          font-weight: 400;
+          line-height: 1.2;
+          text-transform: uppercase;
+          margin-top: .694em;
+          max-width: 23.5em;
+          @media screen and (max-width: 500px) {
+            font-size: 24px;
+          }
+        }
+        .dates {
+          font-size: 1.25em;
+          font-weight: 500;
+        }
+        .desc {
+          font-size: 1.25em;
+          font-weight: 700;
+          margin-bottom: .5em;
+        }
+        .more {
+          @include btn;
+          @include soft-ends(1.0625em);
+          @include soft-sides(3.3125em);
+          @media screen and (max-width: 500px) {
+            @include soft-ends(13px);
+          }
+          @media screen and (max-width: 425px) {
+            @include soft-ends(11px);
+          }
+        }
+      }
+    }
+    .not_action {
+      @media screen and (max-width: 768px) {
+        font-size: .9em;
+      }
+      @media screen and (max-width: 500px) {
+        font-size: .8em;
+      }
+      p {
+        font-family: 'Rubik One';
+        font-size: 2.25em;
+        font-weight: 400;
+        line-height: 1.2;
+        text-transform: uppercase;
+        margin-top: .694em;
+        max-width: 23.5em;
+        @media screen and (max-width: 500px) {
+          font-size: 24px;
+        }
+        span {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}

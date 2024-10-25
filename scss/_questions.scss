@@ -1,0 +1,65 @@
+@import 'settings/var';
+@import 'settings/mixins';
+.questions {
+  @include sectionPadding;
+  .wrapper {
+    @include flexColumn(25px);
+    @media screen and (max-width: 980px) {
+      text-align: center;
+    }
+    @media screen and (max-width: 500px) {
+      row-gap: 20px;
+    }
+  }
+  &__title {
+    @include title;
+    @include animate;
+  }
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 28px 30px;
+    @media screen and (max-width: 980px) {
+      flex-direction: column;
+    }
+    @media screen and (max-width: 500px) {
+      row-gap: 20px;
+    }
+    &--subtitle {
+      @include subTitle;
+      @include animate(titleAnimationReverse);
+      @media screen and (max-width: 1024px) {
+        font-size: 40px;
+      }
+      @media screen and (max-width: 500px) {
+        font-size: 30px;
+      }
+    }
+    &--btn {
+      @include btn;
+      padding: 1.03125em 2.1875em;
+      @media screen and (max-width: 500px) {
+        font-size: 14px;
+        padding: 17px 20px;
+      }
+    }
+  }
+}
+$translateWidth: 10px;
+@keyframes titleAnimation {
+  0%, 100% {
+    transform: translateX(#{$translateWidth});
+  }
+  50% {
+    transform: translateX(-#{$translateWidth});
+  }
+}
+@keyframes titleAnimationReverse {
+  0%, 100% {
+    transform: translateX(-#{$translateWidth});
+  }
+  50% {
+    transform: translateX(#{$translateWidth});
+  }
+}

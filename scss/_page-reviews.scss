@@ -1,0 +1,288 @@
+@import 'settings/var';
+@import 'settings/mixins';
+.page_reviews {
+  &__container {
+    @include sectionPadding;
+    @include flexColumn(80px);
+    .wrapper_content {
+      @include flexColumn(25px);
+    }
+    &--title {
+      @include title;
+    }
+    &--subtitle {
+      @include subTitle;
+    }
+    &--content {
+      @include flexColumn(30px);
+      color: $colorBlack;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.4;
+      padding-top: 5px;
+      b, strong {
+        font-size: 1.125em;
+        font-weight: 600;
+      }
+    }
+    .wrapper__reviews {
+      @include flexColumn(60px);
+      #g-review {
+        &.grwp_grid {
+          .grwp_header {
+            &-inner {
+              max-width: 100%;
+              justify-content: start;
+              color: $colorWhite;
+              background-color: $colorGray;
+              @include soft-ends(37px, 39px);
+              @include soft-sides(79px, 81px);
+              row-gap: 1px;
+              column-gap: 13px;
+              border-radius: 30px;
+              @media screen and (max-width: 1024px) {
+                @include soft-ends(25px);
+                @include soft-sides(30px);
+                display: grid;
+                grid-template-columns: 35px 1fr 223px;
+                grid-template-areas: 'logo logo logo'
+                                     'title title title'
+                                     'rating ratingStar ratingStar'
+                                     'overall overall addReviews';
+                row-gap: 10px;
+              }
+              @media screen and (max-width: 768px) {
+                @include soft-ends(20px);
+                display: grid;
+                grid-template-columns: 35px 1fr;
+                grid-template-areas: 'logo logo'
+                                     'title title'
+                                     'rating ratingStar'
+                                     'overall overall'
+                                     'addReviews addReviews';
+                row-gap: 21px;
+              }
+              @media screen and (max-width: 500px) {
+                font-size: 13px;
+              }
+              .title_google {
+                grid-area: logo;
+                display: flex;
+                justify-content: flex-start;
+                gap: 4px;
+                padding-bottom: 29px;
+                @media screen and (max-width: 1024px) {
+                  padding-bottom: 20px;
+                }
+                @media screen and (max-width: 768px) {
+                  padding-bottom: 10px;
+                }
+                svg {
+                  width: 4em;
+                  height: 1.3125em;
+                }
+                span {
+                  font-size: 1.125em;
+                  font-weight: 500;
+                  line-height: normal;
+                }
+              }
+              .grwp_business-title {
+                grid-area: title;
+                text-align: left;
+                font-size: 2em;
+                font-weight: 500;
+                line-height: normal;
+              }
+              .grwp_total-rating {
+                grid-area: rating;
+                font-size: 1.375em;
+                font-weight: 500;
+                line-height: normal;
+              }
+              .grwp_5_stars {
+                display: none;
+              }
+              .grwp_stars-wrapper {
+                grid-area: ratingStar;
+                img {
+                  @include img(1.5em);
+                }
+              }
+              .grwp_overall {
+                grid-area: overall;
+                color: $colorWhite;
+                font-size: 1.25em;
+                font-weight: 500;
+                line-height: normal;
+                align-self: center;
+                padding-left: .7em;
+                text-align: left;
+                @media screen and (max-width: 1024px) {
+                  padding-left: 0;
+                }
+              }
+              .google_add_review {
+                grid-area: addReviews;
+                max-width: 13.9375em;
+                width: 100%;
+                @media screen and (min-width: 769px) {
+                  margin-left: auto;
+                }
+                a {
+                  display: block;
+                  @include btn;
+                  color: $colorWhite;
+                  @include soft-ends(1em, 1.0625em);
+                  @include soft-sides(1.25em);
+                  width: 100%;
+                  font-size: 1em;
+                }
+              }
+            }
+          }
+          .grwp_body {
+            grid-template-columns: repeat(2, 1fr);
+            margin-top: 60px;
+            margin-bottom: 0;
+            @media screen and (max-width: 768px) {
+              grid-template-columns: 1fr;
+            }
+            .g-review {
+              display: none;
+              flex-direction: column;
+              gap: 8px;
+              border-radius: 30px;
+              border: 1px solid #e3dcdc;
+              @media screen and (max-width: 500px) {
+                @include soft-sides(20px);
+                @include soft-ends(25px);
+              }
+              .gr-inner {
+                &-header, &-body, &-google {
+                  @media screen and (min-width: 769px) {
+                    max-width: 469px;
+                    width: 100%;
+                    align-self: center;
+                  }
+                }
+                &-header {
+                  display: grid;
+                  grid-template-columns: 32px 1fr;
+                  grid-template-areas: 'img title'
+                                     'star star';
+                  align-items: center;
+                  gap: 9px 12px;
+                  & > a {
+                    grid-area: title;
+                    color: $colorBackBlack;
+                    text-decoration: none;
+                    text-align: left;
+                    font-size: 14px;
+                    font-weight: 600;
+                  }
+                  & > img {
+                    grid-area: img;
+                    @include img(32px, 32px);
+                    margin: 0;
+                  }
+                  & > p {
+                    grid-area: star;
+                    text-align: left;
+                    .gr-stars {
+                      display: flex;
+                      justify-content: flex-start;
+                      align-items: center;
+                      gap: 8px;
+                      .stars-wrapper {
+                        line-height: 1.15;
+                        img {
+                          width: 12px !important;
+                          height: 12px !important;
+                          margin-right: 3px !important;
+                          &:last-child {
+                            margin-right: 0 !important;
+                          }
+                        }
+                      }
+                      .time {
+                        font-weight: 500;
+                        color: $colorBackBlack;
+                        opacity: .7;
+                      }
+                    }
+                  }
+                }
+                &-body {
+                  margin: 0;
+                  max-height: 101px;
+                  p {
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 1.25;
+                    color: $colorBackBlack;
+                    margin: 0;
+                  }
+                }
+                &-google {
+                  display: grid;
+                  grid-template-columns: 15px 80px;
+                  justify-content: start;
+                  align-items: center;
+                  gap: 15px;
+                  padding-top: 21px;
+                  margin-top: auto;
+                  @media screen and (max-width: 768px) {
+                    padding-top: 5px;
+                  }
+                  @media screen and (max-width: 500px) {
+                    grid-template-columns: 15px 1fr;
+                  }
+                  img {
+                    @include img(100%);
+                  }
+                  p {
+                    @include flexColumn(1px);
+                    text-align: center;
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: normal;
+                    @media screen and (max-width: 500px) {
+                      flex-direction: row;
+                      text-align: left;
+                      column-gap: 5px;
+                    }
+                    span {
+                      color: #646464;
+                    }
+                    a {
+                      color: #F8BD00;
+                      text-decoration: none;
+                    }
+                  }
+                }
+              }
+              &.active {
+                display: flex;
+              }
+            }
+          }
+        }
+      }
+      .more_reviews {
+        @include flexCenter;
+        &.disabled {
+          display: none;
+        }
+        button {
+          @include btn();
+          background-color: transparent;
+          @include soft-sides(16px);
+          @include soft-ends(20px);
+          max-width: 250px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

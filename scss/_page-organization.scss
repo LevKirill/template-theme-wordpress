@@ -1,0 +1,15 @@
+@import 'settings/var';
+@import 'settings/mixins';
+.page_organization {
+  &__container {
+    .content {
+      & > .wp-block-list {
+        padding-top: 60px;
+        @include ulNumber;
+        @media screen and (max-width: 425px) {
+          padding-top: 40px;
+        }
+      }
+    }
+  }
+}

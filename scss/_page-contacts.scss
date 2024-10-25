@@ -1,0 +1,164 @@
+@import 'settings/var';
+@import 'settings/mixins';
+.page_contacts {
+  &__back_header {
+    background-image: url('../img/background/back-contacts.webp');
+  }
+  &__container {
+    @include sectionPadding;
+    color: $colorBlack;
+    line-height: 1.4;
+    font-weight: 500;
+    .wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-content: center;
+      align-items: start;
+      column-gap: 60px;
+      @media screen and (max-width: 1024px) {
+        grid-template-columns: 1fr;
+        row-gap: 80px;
+      }
+      .content {
+        @include flexColumn(80px);
+        &__title {
+          @include title;
+        }
+        &__subtitle {
+          @include subTitle(black, 36px);
+        }
+        p {
+          font-size: 16px;
+        }
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+        .block {
+          @include flexColumn(30px);
+          align-items: flex-start;
+          &_1 {
+            .list_address {
+              li {
+                font-size: 18px;
+                b, strong {
+                  font-size: 1.111em;
+                  font-weight: 600;
+                }
+              }
+            }
+            .link_google_map {
+              @include btn;
+              @include flexCenter(inline-flex);
+              gap: 15px;
+              @include soft-ends(12px);
+              @include soft-sides(40px);
+              svg {
+                width: 21px;
+                height: 30px;
+              }
+            }
+            .desc {
+              max-width: 490px;
+            }
+          }
+          &_2 {
+            .list_phones {
+              margin-bottom: -10px;
+              a {
+                font-size: 24px;
+              }
+            }
+            .list_messengers {
+              display: grid;
+              grid-template-columns: 69px 1fr;
+              align-items: center;
+              column-gap: 13px;
+              &__icons {
+                @include flexCenter;
+                gap: 9px;
+                a {
+                  color: $colorRed;
+                  @include flexCenter;
+                  width: 30px;
+                  height: 30px;
+                  transition: .2s ease-in;
+                  border-radius: 10px;
+                  &:before {
+                    font-size: 30px;
+                    line-height: 1;
+                    transition: .2s ease-in;
+                  }
+                  &.icon-telegram {
+                    &:before {
+                      font-size: 27px;
+                      position: relative;
+                      top: 1px;
+                    }
+                  }
+                  &:hover {
+                    background-color: $colorRed;
+                    &:before {
+                      color: $colorWhite;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          &_3 {
+            p {
+              @include flexColumn(0);
+              font-size: 18px;
+              span {
+                font-size: 1.111em;
+                font-weight: 600;
+              }
+            }
+          }
+          &_4 {
+            p {
+              @include flexColumn(0);
+              font-size: 20px;
+              font-weight: 600;
+              span {
+                text-transform: uppercase;
+              }
+            }
+            .link_nova_post {
+              @include btn;
+              @include flexCenter(inline-flex);
+              gap: 15px;
+              @include soft-ends(13px);
+              @include soft-sides(28px);
+              &:before {
+                order: 1;
+                font-size: 25px;
+                color: $colorRed;
+                transition: .2s ease-in;
+              }
+              &:hover {
+                &:before {
+                  color: $colorWhite;
+                }
+              }
+            }
+          }
+        }
+      }
+      .map {
+        &__container {
+          @media screen and (max-width: 1024px) {
+            @include heightProportional(62.5%);
+          }
+          @media screen and (min-width: 1025px) {
+            iframe {
+              width: 100%;
+              height: 719px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

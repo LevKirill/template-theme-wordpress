@@ -1,0 +1,159 @@
+@import 'settings/var';
+@import 'settings/mixins';
+.main_screen {
+  background: url('../img/background/main-screen.jpg') no-repeat center;
+  background-size: cover;
+  @include soft-ends(calc(159px + 119px), 119px);
+  @media screen and (min-width: 1025px) {
+    min-height: 100vh;
+  }
+  @media screen and (max-width: 1024px) {
+    @include soft-ends(calc(108px + 51px), 51px);
+  }
+  @media screen and (max-width: 920px) {
+    @include soft-ends(calc(94px + 119px), 51px);
+  }
+  @media screen and (max-width: 500px) {
+    @include soft-ends(calc(84px + 70px), 40px);
+  }
+  &.animate__animated {
+    animation-name: backAnimation;
+    animation-duration: 8000ms;
+  }
+  .wrapper {
+    position: relative;
+    z-index: 2;
+    @include flexColumn(1.8125em);
+    align-items: flex-start;
+    @media screen and (min-width: 1025px) {
+      min-height: calc(100vh - 159px - 119px - 119px);
+    }
+  }
+  &__title {
+    @include flexColumn(0);
+    color: $colorWhite;
+    font-family: 'Rubik One';
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-top: auto;
+    span {
+      animation-duration: 2000ms;
+      font-size: 6.25em;
+      hyphens: auto;
+      @media screen and (max-width: 1024px) {
+        font-size: 5.875em;
+      }
+      @media screen and (max-width: 768px) {
+        font-size: 5em;
+      }
+      @media screen and (max-width: 500px) {
+        font-size: 3.75em;
+        line-height: .93;
+      }
+      &:nth-child(1) {
+        font-size: 4.5em;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: $colorWhite;
+        color: rgba($color: $colorWhite, $alpha: 0);
+        @media screen and (max-width: 1024px) {
+          font-size: 4em;
+        }
+        @media screen and (max-width: 768px) {
+          font-size: 3em;
+        }
+        @media screen and (max-width: 500px) {
+          font-size: 2.375em;
+        }
+      }
+      &:nth-child(2) {
+        @include margin-ends(-.17em, -.25em);
+        animation-delay: 800ms;
+        @media screen and (max-width: 500px) {
+          @include margin-ends(5px, 0);
+        }
+      }
+      &:nth-child(3) {
+        animation-delay: 1600ms;
+      }
+    }
+  }
+  &__desc {
+    color: $colorWhite;
+    font-family: 'Rubik One';
+    font-size: 1.875em;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-bottom: auto;
+    animation-delay: 2400ms;
+    @media screen and (max-width: 1024px) {
+      font-size: 1.75em;
+    }
+    @media screen and (max-width: 768px) {
+      font-size: 1.5em;
+    }
+    @media screen and (max-width: 500px) {
+      @include flexColumn(4px);
+    }
+    span {
+      color: $colorRed;
+    }
+  }
+  &__btn {
+    @include flexCenter(inline-flex);
+    color: $colorWhite;
+    font-size: 1em;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+    @include soft-sides(2.1875em);
+    @include soft-ends(1.0625em);
+    border-radius: 1.875em;
+    border: 1px solid rgba($color: $colorWhite, $alpha: .6);
+    transition: .2s ease-in;
+    margin-top: 89px;
+    animation-delay: 3200ms;
+    @media screen and (max-width: 500px) {
+      margin-top: 49px;
+    }
+    @media screen and (max-width: 500px) {
+      font-size: 14px;
+      @include soft-sides(20px);
+    }
+    &:hover {
+      border-color: $colorRed;
+      background-color: $colorRed;
+    }
+  }
+  .background {
+    @include absoluteCenter;
+    background: $colorBackBlack;
+    opacity: 0;
+    z-index: 1;
+    &.animate__animated {
+      animation-name: backAnimationAfter;
+      animation-duration: 4000ms;
+    }
+  }
+}
+@keyframes backAnimation {
+  0% {
+    background-size: 150%;
+  }
+  99% {
+    background-size: 100%;
+  }
+  100% {
+    background-size: cover;
+  }
+}
+@keyframes backAnimationAfter {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

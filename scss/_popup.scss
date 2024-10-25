@@ -1,0 +1,112 @@
+@import 'settings/var';
+@import 'settings/mixins';
+.popup_back {
+  @include flexCenter;
+  @include absoluteCenter;
+  position: fixed;
+  background: rgba($color: $colorBackBlack, $alpha: .95);
+  z-index: 50;
+  width: 100%;
+  height: 100%;
+  left: -9999px;
+  opacity: 0;
+  transition: opacity .2s ease-in;
+  @include soft-sides(15px);
+  .popup_block {
+    position: relative;
+    z-index: 2;
+    max-width: 550px;
+    width: 100%;
+    @include soft-ends(3.125em);
+    @include soft-sides(2.375em);
+    background-color: $colorWhite;
+    color: $colorPopup;
+    @include flexColumn(1.875em);
+    overflow-y: auto;
+    max-height: 80%;
+    @media screen and (max-width: 768px) {
+      @include soft-sides(1.8em);
+    }
+    @media screen and (max-width: 425px) {
+      @include soft-sides(1.25em);
+    }
+    &__title {
+      color: #000;
+      font-family: 'Rubik One';
+      font-size: 2em;
+      font-weight: 400;
+      line-height: 1.1;
+      text-align: center;
+      margin-bottom: .625em;
+      span {
+        display: inline-block;
+      }
+    }
+    &__list {
+      @include flexColumn(1.875em);
+      line-height: 1.4;
+      & > li {
+        @include flexColumn(1em);
+        & > span {
+          font-size: 16px;
+          font-weight: 400;
+        }
+      }
+      &--child {
+        li {
+          font-size: 1.25em;
+          font-weight: 600;
+        }
+      }
+    }
+    &__note {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+    &__desc {
+      @include flexColumn(0.778em);
+      font-size: 1.125em;
+      font-weight: 400;
+      line-height: 1.4;
+      b, strong {
+        font-weight: 600;
+      }
+    }
+    &__go_back {
+      @include flexCenter;
+      a {
+        @include soft-ends(1.0625em);
+        @include soft-sides(3.3125em);
+        @include btn;
+      }
+    }
+    &__close {
+      position: absolute;
+      @include flexCenter;
+      width: 1.875em;
+      height: 1.875em;
+      top: .5em;
+      right: .5em;
+      svg {
+        width: 100%;
+        height: 100%;
+        transition: .2s ease-in;
+      }
+      &:hover {
+        svg {
+          transform: scale(1.15);
+        }
+      }
+    }
+  }
+  &__close {
+    position: absolute;
+    z-index: 1;
+    @include absoluteCenter;
+  }
+  &.active {
+    left: 0;
+    opacity: 1;
+  }
+}

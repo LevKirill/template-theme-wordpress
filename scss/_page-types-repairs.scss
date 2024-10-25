@@ -1,0 +1,70 @@
+@import 'settings/var';
+@import 'settings/mixins';
+.page_types_repairs {
+  &__container {
+    @include flexColumn(61px);
+    @include sectionPadding;
+    padding-top: 69px;
+    padding-bottom: 130px;
+    @media screen and (max-width: 1024px) {
+      padding-bottom: 100px;
+    }
+    @media screen and (max-width: 768px) {
+      padding-bottom: 80px;
+    }
+    &--block {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      @media screen and (max-width: 1024px) and (min-width: 601px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @media screen and (max-width: 600px) {
+        grid-template-columns: 1fr;
+      }
+      .content {
+        max-width: 600px;
+        width: 100%;
+        @include flexColumn(9px);
+        color: #000;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 1.4;
+        @media screen and (max-width: 1024px) {
+          grid-column: 1/3;
+        }
+        &__title {
+          @include subTitle;
+          margin-bottom: .8542em;
+          @media screen and (max-width: 768px) {
+            font-size: 35px;
+          }
+          @media screen and (max-width: 600px) {
+            font-size: 30px;
+          }
+          @media screen and (max-width: 500px) {
+            font-size: 25px;
+          }
+        }
+      }
+      .image {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        @media screen and (max-width: 1024px) and (min-width: 601px) {
+          grid-column: 3/4;
+        }
+        @media screen and (max-width: 600px) {
+          justify-content: flex-start;
+        }
+        img {
+          @include img(600px);
+          @media screen and (max-width: 600px) {
+            max-width: 400px;
+          }
+        }
+      }
+    }
+  }
+}

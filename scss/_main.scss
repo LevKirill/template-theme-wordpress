@@ -1,0 +1,16 @@
+@import 'fonts';
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: $colorText;
+  overflow-x: hidden;
+}
+.wrapper {
+  max-width: 1350px;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0 30px;
+  @media screen and (max-width: 425px) {
+    padding: 0 15px;
+  }
+}

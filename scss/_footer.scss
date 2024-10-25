@@ -1,0 +1,223 @@
+@import 'settings/var';
+@import 'settings/mixins';
+@import 'popup';
+.footer {
+  background-color: $colorBackBlack;
+  color: $colorWhite;
+  @include soft-ends(110px, 130px);
+  @media screen and (max-width: 1200px) {
+    @include soft-ends(100px);
+  }
+  @media screen and (max-width: 980px) {
+    @include soft-ends(79px, 75px);
+  }
+  @media screen and (max-width: 479px) {
+    @include soft-ends(60px);
+  }
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-areas: 'logo services aboutUs contacts'
+                         'copyright novaPost aboutUs contacts';
+    justify-content: space-between;
+    gap: 2.5em 1.5em;
+    @media screen and (max-width: 980px) {
+      grid-template-columns: repeat(3, auto);
+      grid-template-areas: 'logo logo logo'
+                           'services aboutUs contacts'
+                           'novaPost aboutUs contacts'
+                           'copyright aboutUs contacts';
+    }
+    @media screen and (max-width: 768px) {
+      grid-template-columns: repeat(2, auto);
+      grid-template-areas: 'logo logo'
+                           'aboutUs contacts'
+                           'services novaPost'
+                           'services copyright';
+    }
+    @media screen and (max-width: 479px) {
+      grid-template-columns: auto;
+      grid-template-areas: 'logo'
+                           'services'
+                           'novaPost'
+                           'aboutUs'
+                           'contacts'
+                           'copyright';
+    }
+  }
+  h2 {
+    font-family: 'Rubik One';
+    font-size: 1.5em;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    @media screen and (max-width: 479px) {
+      font-size: 20px;
+    }
+  }
+  &__logo {
+    grid-area: logo;
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    img {
+      @include img(13.125em);
+      @media screen and (max-width: 1200px) {
+        max-width: 10em;
+      }
+    }
+  }
+  &__services {
+    grid-area: services;
+    @include flexColumn(2.25em);
+    @media screen and (max-width: 479px) {
+      gap: 20px;
+    }
+    &--nav {
+      ul {
+        @include flexColumn(.375em);
+        li {
+          a {
+            color: inherit;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.5;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: .2s ease-in;
+            &:hover {
+              color: $colorRed;
+            }
+            @media screen and (max-width: 1200px) {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__about_us {
+    grid-area: aboutUs;
+    @include flexColumn(2.25em);
+    @media screen and (max-width: 479px) {
+      gap: 20px;
+    }
+    &--nav {
+      ul {
+        @include flexColumn(.3125em);
+        li {
+          a {
+            color: inherit;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.5;
+            text-decoration: none;
+            transition: .2s ease-in;
+            &:hover {
+              color: $colorRed;
+            }
+            @media screen and (max-width: 1200px) {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+  &__contacts {
+    grid-area: contacts;
+    @include flexColumn(2.25em);
+    @media screen and (max-width: 479px) {
+      gap: 20px;
+    }
+    .container {
+      @include flexColumn(1.8125em);
+      @media screen and (max-width: 479px) {
+        gap: 10px;
+      }
+    }
+    &--phones {
+      a {
+        color: inherit;
+        font-size: 1.25em;
+        font-weight: 500;
+        line-height: 1.4;
+        text-decoration: none;
+        @media screen and (max-width: 1200px) {
+          font-size: 18px;
+        }
+      }
+    }
+    &--address, &--working_time {
+      font-size: 1.125em;
+      font-weight: 500;
+      line-height: 1.5;
+      max-width: 15.444em;
+      @media screen and (max-width: 1200px) {
+        font-size: 16px;
+      }
+    }
+    &--messengers {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: .9375em;
+      li {
+        @include flexCenter;
+        width: 24px;
+        height: 24px;
+        border-radius: 10px;
+        transition: .2s ease-in;
+        a {
+          color: $colorRed;
+          text-decoration: none;
+          font-size: 21px;
+          transition: .2s ease-in;
+        }
+        &:nth-child(2), &:nth-child(1) {
+          a {
+            font-size: 22px;
+          }
+        }
+        &:hover {
+          background-color: $colorWhite;
+        }
+      }
+    }
+  }
+  &__copyright {
+    grid-area: copyright;
+    align-self: end;
+    display: flex;
+    align-items: center;
+    min-height: 53px;
+    line-height: normal;
+    @media screen and (min-width: 1201px) {
+      br {
+        display: none;
+      }
+    }
+    @media screen and (max-width: 1200px) {
+      font-size: 14px;
+    }
+    @media screen and (max-width: 980px) {
+      min-height: auto;
+      br {
+        display: none;
+      }
+    }
+  }
+  &__nova_post {
+    grid-area: novaPost;
+    align-self: end;
+    @media screen and (max-width: 768px) {
+      .header__nova_post {
+        display: inline-flex;
+      }
+    }
+    @media screen and (max-width: 479px) {
+      margin-top: -20px;
+    }
+  }
+}

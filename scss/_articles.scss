@@ -1,0 +1,551 @@
+@import 'settings/var';
+@import 'settings/mixins';
+.article {
+  &_profiservice {
+    @include sectionPadding;
+    .wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      align-items: start;
+      gap: 40px 30px;
+      @media screen and (max-width: 1024px) {
+        grid-template-columns: 1fr;
+      }
+      @media screen and (max-width: 768px) {
+        row-gap: 25px;
+      }
+    }
+    &__block {
+      &_desc {
+        @include flexColumn(30px);
+        @media screen and (min-width: 1025px) {
+          max-width: 586px;
+        }
+        @media screen and (max-width: 768px) {
+          gap: 20px;
+        }
+        h2 {
+          @include subTitle;
+        }
+        .desc {
+          color: $colorBackBlack;
+          font-size: 20px;
+          font-weight: 500;
+          line-height: 1.5;
+          @media screen and (max-width: 768px) {
+            font-size: 18px;
+          }
+        }
+      }
+      &_advantages {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 30px;
+        max-width: 630px;
+        @media screen and (max-width: 500px) {
+          grid-template-columns: 1fr;
+        }
+        .block {
+          @include flexColumn(15px);
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          border-radius: 30px;
+          background: $colorBackBlack;
+          @include soft-ends(37px, 45px);
+          @include soft-sides(20px);
+          color: $colorWhite;
+          @media screen and (max-width: 500px) {
+            @include soft-ends(25px);
+            @include soft-sides(15px);
+          }
+          &:before {
+            color: $colorRed;
+            font-size: 50px;
+          }
+          p {
+            max-width: 225px;
+            width: 100%;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.5;
+            @media screen and (max-width: 768px) {
+              font-size: 16px;
+              max-width: 200px;
+            }
+            b, strong {
+              color: $colorRed;
+            }
+          }
+        }
+      }
+    }
+  }
+  &_our_services {
+    @include sectionPadding;
+    background-color: $colorBackBlack;
+    color: $colorWhite;
+    .wrapper {
+      @include flexColumn(25px);
+    }
+    &__title {
+      @include title;
+    }
+    .block_title {
+      display: grid;
+      grid-template-columns: 1fr minmax(360px, 390px);
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px 20px;
+      @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+      h3 {
+        @include subTitle(white);
+      }
+      &__link {
+        max-width: 24.375em;
+        @media screen and (max-width: 425px) {
+          font-size: 14px;
+        }
+        a {
+          @include btn($colorWhite, $colorWhite, $colorWhite, 1em);
+          @include soft-ends(16px, 17px);
+          @include soft-sides(15px);
+          width: 100%;
+        }
+      }
+    }
+    &__desc {
+      &.col_1 {
+        @include soft-ends(23px, 48px);
+        li {
+          position: relative;
+          @include soft-ends(5px);
+          b, strong {
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.4;
+            padding-left: 47px;
+            @media screen and (max-width: 768px) {
+              font-size: 18px;
+            }
+            @media screen and (max-width: 500px) {
+              font-size: 16px;
+            }
+          }
+          &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 1.25em;
+            width: .85em;
+            height: 1px;
+            background-color: $colorRed;
+          }
+        }
+      }
+      &.col_2 {
+        max-width: 1127px;
+        width: 100%;
+        @include margin-sides(auto);
+        column-count: 2;
+        column-width: 454px;
+        column-gap: calc(100% - 454px - 454px);
+        @include soft-ends(47px);
+        @media screen and (max-width: 1024px) {
+          column-count: 1;
+          column-width: 100%;
+        }
+        li {
+          max-width: 467px;
+          display: grid;
+          grid-template-columns: 17px 1fr;
+          gap: 30px;
+          padding: 5px 0;
+          @media screen and (max-width: 1024px) {
+            max-width: 100%;
+          }
+          @media screen and (max-width: 500px) {
+            gap: 20px;
+          }
+          b, strong {
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.4;
+            @media screen and (max-width: 768px) {
+              font-size: 18px;
+            }
+            @media screen and (max-width: 500px) {
+              font-size: 16px;
+            }
+          }
+          &:before {
+            content: '';
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 1px;
+            background-color: $colorRed;
+            top: 13px;
+          }
+        }
+      }
+      &.col_3 {
+        display: grid;
+        justify-content: space-between;
+        grid-template-columns: repeat(3, auto);
+        gap: 50px 30px;
+        @include soft-ends(52px);
+        @media screen and (max-width: 1024px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        @media screen and (max-width: 768px) {
+          column-gap: 20px;
+        }
+        @media screen and (max-width: 500px) {
+          grid-template-columns: 1fr;
+          row-gap: 30px;
+          @include soft-ends(20px);
+        }
+        & > li {
+          position: relative;
+          max-width: 369px;
+          padding-left: 47px;
+          &:before {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 17px;
+            height: 1px;
+            background-color: $colorRed;
+            left: 0;
+            top: 17px;
+          }
+        }
+      }
+      li {
+        width: 100%;
+        line-height: 1.4;
+        @include flexColumn(20px);
+        & > strong {
+          font-size: 24px;
+          font-weight: 600;
+          @media screen and (max-width: 768px) {
+            font-size: 21px;
+          }
+          @media screen and (max-width: 600px) and (min-width: 426px) {
+            font-size: 18px;
+          }
+        }
+        .child {
+          font-size: 18px;
+          font-weight: 500;
+          @media screen and (max-width: 768px) {
+            font-size: 16px;
+          }
+          @media screen and (max-width: 600px) and (min-width: 426px) {
+            font-size: 14px;
+          }
+          li {
+            gap: 10px;
+          }
+        }
+      }
+    }
+    &__desc_after {
+      @include flexColumn(30px);
+      @include soft-ends(48px, 100px);
+      .title {
+        @include title($colorWhite);
+        max-width: 720px;
+        b, strong {
+          color: $colorRed;
+        }
+      }
+      .items {
+        @include flexColumn(10px);
+        padding-left: 33px;
+        li {
+          display: grid;
+          grid-template-columns: 17px 1fr;
+          gap: 17px;
+          position: relative;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 1.4;
+          max-width: 1147px;
+          &:before {
+            content: '';
+            display: block;
+            position: relative;
+            width: 100%;
+            height: 1px;
+            background-color: $colorRed;
+            top: 9px;
+          }
+        }
+      }
+    }
+    &__list_desc {
+      counter-reset: section;
+      margin-top: 4.25em;
+      @media screen and (min-width: 1025px) {
+        column-count: 2;
+      }
+      @media screen and (max-width: 1024px) {
+        @include flexColumn(0);
+      }
+      @media screen and (max-width: 600px) {
+        font-size: 14px;
+      }
+      @media screen and (max-width: 425px) {
+        font-size: 12px;
+      }
+      li {
+        display: grid;
+        grid-template-columns: 2.5em 1fr;
+        column-gap: 2.3em;
+        page-break-inside: avoid;
+        break-inside: avoid;
+        color: $colorWhite;
+        font-family: Montserrat;
+        font-size: 1.25em;
+        font-weight: 500;
+        line-height: 1.4;
+        @include soft-ends(.7em);
+        @media screen and (max-width: 425px) {
+          font-size: 16px;
+        }
+        &:before {
+          counter-increment: section;
+          content: counter(section);
+          @include flexCenter;
+          font-family: 'Rubik One';
+          font-size: 1.6em;
+          font-weight: 400;
+          width: 1.5625em;
+          height: 1.5625em;
+          border-radius: 50%;
+          background-color: $colorRed;
+        }
+        b, strong {
+          color: $colorRed;
+        }
+        a {
+          display: inline-block;
+          color: inherit;
+          text-decoration: none;
+        }
+        &:first-child {
+          @media screen and (min-width: 1025px) {
+            max-width: 563px;
+          }
+        }
+      }
+    }
+    &__gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 13px 15px;
+      @media screen and (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 637px;
+        width: 100%;
+        @include margin-sides(auto);
+      }
+      li {
+        @include heightProportional(64.309%);
+      }
+    }
+  }
+  &_our_advantages {
+    @include sectionPadding;
+    &__headlines {
+      margin-bottom: 4em;
+      h2 {
+        @include title;
+      }
+      h3 {
+        @include subTitle;
+        margin-top: .5208em;
+      }
+    }
+    &__items {
+      @include ulNumber;
+      margin-bottom: 130px;
+      @media screen and (max-width: 768px) {
+        margin-bottom: 80px;
+      }
+      @media screen and (max-width: 500px) {
+        margin-bottom: 40px;
+      }
+      @media screen and (max-width: 425px) {
+        margin-bottom: 20px;
+      }
+      &--nova_post {
+        margin-bottom: 0;
+      }
+      & > li {
+        & > b, & > strong {
+          max-width: 549px;
+        }
+      }
+    }
+    &__items_after {
+      @include flexColumn(104px);
+      @media screen and (max-width: 768px) {
+        gap: 60px;
+      }
+      @media screen and (max-width: 425px) {
+        gap: 40px;
+      }
+      li {
+        @include flexColumn(30px);
+        @media screen and (max-width: 425px) {
+          gap: 20px;
+        }
+        .title {
+          @include title($colorBackBlack, 1.5);
+        }
+        .desc {
+          color: $colorBackBlack;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+  &_nova_post_pay {
+    padding-top: 130px;
+    @media screen and (max-width: 1024px) {
+      padding-top: 100px;
+    }
+    @media screen and (max-width: 768px) {
+      padding-top: 80px;
+    }
+    @media screen and (max-width: 425px) {
+      padding-top: 60px;
+    }
+    .wrapper {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      align-items: center;
+      @media screen and (max-width: 700px) {
+        grid-template-columns: 1fr;
+        row-gap: 1em;
+      }
+      h2 {
+        @include subTitle;
+      }
+      .items {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(16.625em, max-content));
+        gap: .2em 2.75em;
+        color: $colorWhite;
+        background-color: $colorBackAdvantages;
+        @include soft-ends(1.25em);
+        @include soft-sides(4.6875em);
+        border-radius: 30px;
+        @media screen and (max-width: 1200px) {
+          font-size: 14px;
+        }
+        @media screen and (min-width: 1025px) and (max-width: 1100px) {
+          font-size: 12px;
+        }
+        @media screen and (max-width: 1024px) {
+          @include soft-sides(1.25em);
+          column-gap: 2em;
+        }
+        @media screen and (max-width: 425px) {
+          row-gap: 10px;
+        }
+        li {
+          font-size: 1.25em;
+          font-weight: 500;
+          line-height: 1.4;
+          display: grid;
+          grid-template-columns: 40px 1fr;
+          align-items: center;
+          column-gap: .5em;
+          &:before {
+            font-size: 2em;
+            color: $colorRed;
+          }
+        }
+      }
+    }
+  }
+}
+.page-id-513, .page-id-522, .page-id-526, .page-id-529 {
+  .article_our_advantages {
+    .wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-areas: 'title advantages'
+                           'desc desc';
+      column-gap: 30px;
+      @media screen and (max-width: 1024px) {
+        grid-template-columns: 1fr;
+        grid-template-areas: 'title'
+                             'advantages'
+                             'desc';
+      }
+    }
+    &__headlines {
+      grid-area: title;
+    }
+    &__items {
+      grid-area: advantages;
+      @media screen and (min-width: 1025px) {
+        margin-top: 0;
+      }
+      @media screen and (max-width: 1024px) {
+        max-width: 600px;
+      }
+      & > li:nth-child(-n+9) {
+        @include soft-sides(30px);
+        & > ul {
+          max-width: 450px;
+          width: 100%;
+          @include margin-sides(auto);
+          & > li {
+            & > ul {
+              & > li {
+                position: relative;
+                font-size: 20px;
+                font-weight: 500;
+                line-height: 1.6;
+                padding-left: 3.25em;
+                @media screen and (max-width: 768px) {
+                  font-size: 18px;
+                }
+                @media screen and (max-width: 500px) {
+                  font-size: 16px;
+                }
+                &:before {
+                  content: '';
+                  display: block;
+                  position: absolute;
+                  left: 0;
+                  top: 9px;
+                  width: 1.0625em;
+                  height: 1px;
+                  background-color: $colorRed;
+                }
+              }
+            }
+          }
+        }
+        &:after {
+          display: none;
+        }
+      }
+      &_after {
+        grid-area: desc;
+      }
+    }
+  }
+}

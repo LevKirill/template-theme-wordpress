@@ -1,0 +1,70 @@
+@import 'settings/var';
+@import 'settings/mixins';
+.work_results {
+  background: url('../img/background/work-results.webp') no-repeat center;
+  background-size: cover;
+  color: $colorWhite;
+  @include sectionPadding;
+  overflow: hidden;
+  &__title {
+    @include title;
+  }
+  &__subtitle {
+    @include subTitle(white);
+    @include soft-ends(25px, 91px);
+    max-width: 800px;
+    animation-delay: .3s;
+    @media screen and (max-width: 768px) {
+      padding-bottom: 68px;
+    }
+    @media screen and (max-width: 500px) {
+      @include soft-ends(16px, 40px);
+    }
+  }
+  &__items {
+    ul {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      justify-content: space-between;
+      gap: 58px 30px;
+      @media screen and (max-width: 900px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media screen and (max-width: 500px) {
+        row-gap: 40px;
+      }
+      li {
+        max-width: 280px;
+        width: 100%;
+        @include flexColumn(35px);
+        align-items: flex-start;
+        @media screen and (max-width: 900px) {
+          max-width: 100%;
+        }
+        @media screen and (max-width: 500px) {
+          gap: 20px;
+        }
+        &:before {
+          color: $colorRed;
+          font-size: 46px;
+        }
+        p {
+          font-size: 18px;
+          font-weight: 500;
+          line-height: 1.5;
+          @media screen and (max-width: 500px) {
+            font-size: 16px;
+          }
+        }
+        &:nth-child(2) {
+          p {
+            max-width: 261px;
+            @media screen and (max-width: 900px) {
+              max-width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

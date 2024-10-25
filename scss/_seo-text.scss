@@ -1,0 +1,28 @@
+@import 'settings/var';
+@import 'settings/mixins';
+.seo_text {
+  padding-top: 60px;
+  color: $colorBackBlack;
+  line-height: 1.5;
+  .wrapper {
+    @include soft-ends(0);
+  }
+  h2 {
+    font-family: 'Rubik One';
+    font-size: 24px;
+    font-weight: 400;
+    text-transform: uppercase;
+    padding-bottom: 1em;
+    @media screen and (max-width: 500px) {
+      font-size: 20px;
+    }
+  }
+  p, ul, ol {
+    @include soft-ends(.375em);
+    font-size: 16px;
+    font-weight: 500;
+    b, strong {
+      font-weight: 600;
+    }
+  }
+}

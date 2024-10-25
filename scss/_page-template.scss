@@ -1,0 +1,215 @@
+@import 'settings/var';
+@import 'settings/mixins';
+.page_promotion_child {
+  &__container {
+    @include flexColumn(70px);
+    @include soft-ends(70px, 130px);
+    @media screen and (max-width: 1024px) {
+      @include soft-ends(70px, 100px);
+    }
+    @media screen and (max-width: 768px) {
+      @include soft-ends(70px, 80px);
+    }
+    @media screen and (max-width: 600px) {
+      gap: 60px;
+      @include soft-ends(60px);
+    }
+    @media screen and (max-width: 425px) {
+      gap: 40px;
+      @include soft-ends(40px, 60px);
+    }
+    .wrapper {
+      &_img {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 3.75em 5em;
+        @media screen and (max-width: 1440px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        @media screen and (max-width: 1200px) {
+          column-gap: 3.5em;
+        }
+        @media screen and (max-width: 1024px) {
+          grid-template-columns: 1fr;
+          row-gap: 4em;
+        }
+        @media screen and (max-width: 600px) {
+          grid-template-columns: 1fr;
+          row-gap: 3.125em;
+        }
+      }
+    }
+    .image {
+      text-align: center;
+      img {
+        max-width: 41em;
+        width: 100%;
+        height: auto;
+        border-radius: 1.875em;
+      }
+    }
+    .desc {
+      color: $colorBackBlack;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.5;
+      @media screen and (max-width: 768px) {
+        font-size: 18px;
+      }
+      @media screen and (max-width: 600px) {
+        font-size: 16px;
+      }
+      &__title {
+        font-family: 'Rubik One';
+        font-size: 1.8em;
+        font-weight: 400;
+        line-height: 1.2;
+        text-transform: uppercase;
+        padding-bottom: .944em;
+        @media screen and (max-width: 768px) {
+          font-size: 1.667em;
+        }
+        @media screen and (max-width: 425px) {
+          font-size: 1.5625em;
+        }
+      }
+      &__dates {
+        font-size: 1em;
+        font-weight: 500;
+        line-height: 1.5;
+        padding-bottom: 1.25em;
+      }
+      &__content {
+        @include flexColumn(2.9em);
+        @media screen and (max-width: 600px) {
+          gap: 2.22em;
+        }
+        p {
+          b, strong {
+            font-weight: 700;
+          }
+        }
+        ul {
+          li {
+            &:not(.note) {
+              font-family: 'Rubik One';
+              font-size: 1.3em;
+              font-weight: 400;
+              line-height: 1.3;
+              text-transform: uppercase;
+              b, strong {
+                color: $colorRed;
+              }
+            }
+            &.note {
+              font-size: 16px;
+              padding-top: 1em;
+            }
+          }
+        }
+        .wp-block-group {
+          & > div {
+            @include flexColumn(1em);
+          }
+        }
+        h3 {
+          font-family: 'Rubik One';
+          font-weight: 400;
+          line-height: 1.3;
+          text-transform: uppercase;
+        }
+      }
+    }
+    .wrapper_clean_thursday {
+      color: $colorBackBlack;
+      line-height: 1.5;
+      .block {
+        &_1 {
+          @include flexColumn(1.25em);
+          max-width: 41em;
+          h3 {
+            font-family: 'Rubik One';
+            font-size: 1.625em;
+            font-weight: 400;
+            line-height: 1.3;
+            text-transform: uppercase;
+            @media screen and (max-width: 768px) {
+              font-size: 1.5em;
+            }
+            @media screen and (max-width: 600px) {
+              font-size: 1.375em;
+            }
+            @media screen and (max-width: 500px) {
+              font-size: 1.25em;
+            }
+          }
+          p {
+            font-size: 1.25em;
+            font-weight: 500;
+          }
+        }
+        &_2 {
+          .items {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.4375em;
+            @media screen and (max-width: 500px) {
+              font-size: 14px;
+            }
+            @media screen and (max-width: 425px) {
+              grid-template-columns: 1fr;
+            }
+            .item {
+              @include flexColumn(6px);
+              align-items: center;
+              @include soft-ends(2.3125em, 2.0625em);
+              @include soft-sides(.625em);
+              border-radius: 1.875em;
+              border: 1px solid $colorBackBlack;
+              font-weight: 700;
+              text-align: center;
+              transition: .2s ease-in;
+              .title {
+                font-size: 1.25em;
+                padding-bottom: .9em;
+              }
+              .price {
+                &_old {
+                  position: relative;
+                  font-size: 1.125em;
+                  font-weight: 500;
+                  &:after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    @include absoluteCenter(-6px, 0, -11%);
+                    width: 122%;
+                    height: 1px;
+                    background-color: $colorBackBlack;
+                    transform: rotate(-11deg);
+                    transition: .2s ease-in;
+                  }
+                }
+                &_new {
+                  color: $colorRed;
+                  font-size: 2em;
+                }
+              }
+              &:hover {
+                background-color: $colorBackBlack;
+                color: $colorWhite;
+                .price {
+                  &_old {
+                    &:after {
+                      background-color: $colorWhite;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

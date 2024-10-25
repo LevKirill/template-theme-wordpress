@@ -1,0 +1,186 @@
+@import 'settings/var';
+@import 'settings/mixins';
+.page_types_services {
+  &__back_header {
+    background-image: url('../img/background/back-types-services.webp');
+  }
+  &__container {
+    @include sectionPadding;
+    .wrapper {
+      @include flexColumn(75px);
+    }
+    .content {
+      @include flexColumn(30px);
+      color: $colorBackBlack;
+      font-size: 20px;
+      @media screen and (max-width: 768px) {
+        font-size: 18px;
+      }
+      @media screen and (max-width: 600px) {
+        gap: 20px;
+      }
+      @media screen and (max-width: 425px) {
+        font-size: 16px;
+      }
+      h2 {
+        font-family: 'Rubik One';
+        font-size: 36px;
+        font-weight: 400;
+        line-height: 1.2;
+        text-transform: uppercase;
+        @media screen and (max-width: 768px) {
+          font-size: 30px;
+        }
+        @media screen and (max-width: 500px) {
+          font-size: 25px;
+        }
+      }
+      p {
+        font-weight: 500;
+        line-height: 1.5;
+      }
+      &__container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 30px;
+        @media screen and (max-width: 1024px) {
+          grid-template-columns: 1fr;
+        }
+        @media screen and (max-width: 600px) {
+          gap: 20px;
+        }
+        & > .wp-block-column:nth-child(1) {
+          @include flexColumn(47px);
+        }
+        & > .wp-block-column:nth-child(2) {
+          .wp-block-columns {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5em;
+            @media screen and (max-width: 1024px) {
+              max-width: 630px;
+            }
+            @media screen and (max-width: 600px) {
+              gap: 20px;
+            }
+            @media screen and (max-width: 500px) {
+              grid-template-columns: 1fr;
+            }
+            .wp-block-column {
+              @include flexColumn(.75em);
+              align-items: center;
+              text-align: center;
+              border-radius: 30px;
+              background: $colorBackBlack;
+              color: $colorWhite;
+              @include soft-ends(1.85em, 2.25em);
+              @include soft-sides(1em);
+              @media screen and (max-width: 600px) {
+                @include soft-sides(15px);
+                @include soft-ends(1.48em, 1.8em);
+              }
+              &:before {
+                color: $colorRed;
+                font-size: 2.5em;
+              }
+              p {
+                font-size: .9em;
+                max-width: 12.5em;
+                @media screen and (max-width: 425px) {
+                  font-size: 16px;
+                }
+                b, strong {
+                  color: $colorRed;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .list_service {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 68px 30px;
+      @media screen and (max-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media screen and (max-width: 600px) {
+        gap: 40px 20px;
+      }
+      @media screen and (max-width: 425px) {
+        grid-template-columns: 1fr;
+      }
+      .item {
+        color: $colorBackBlack;
+        cursor: pointer;
+        &__image {
+          @include heightProportional(73.17%);
+        }
+        h3 {
+          font-family: 'Rubik One';
+          font-size: 24px;
+          font-weight: 400;
+          line-height: normal;
+          text-transform: uppercase;
+          padding-top: 1.667em;
+          @media screen and (max-width: 1024px) {
+            font-size: 20px;
+          }
+          @media screen and (max-width: 600px) {
+            font-size: 18px;
+          }
+        }
+        .list_types_repairs {
+          overflow-y: hidden;
+          max-height: 0;
+          transition: .2s ease-in;
+          transition-delay: .1s;
+          ul {
+            @include flexColumn(5px);
+            padding-top: 20px;
+            li {
+              position: relative;
+              padding-left: 55px;
+              @media screen and (max-width: 1024px) {
+                padding-left: 20px;
+              }
+              &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                width: 17px;
+                height: 1px;
+                background-color: $colorRed;
+                left: 0;
+                top: 11px;
+                @media screen and (max-width: 1024px) {
+                  width: 10px;
+                }
+              }
+              a {
+                color: inherit;
+                font-size: 16px;
+                font-weight: 500;
+                line-height: 1.4;
+                text-decoration: none;
+                @media screen and (max-width: 600px) {
+                  font-size: 14px;
+                }
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+        }
+        &:hover {
+          .list_types_repairs {
+            max-height: 999px;
+            transition-delay: .2s;
+          }
+        }
+      }
+    }
+  }
+}

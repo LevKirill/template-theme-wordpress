@@ -1,0 +1,517 @@
+@import 'settings/var';
+@import 'settings/mixins';
+.header {
+  position: fixed;
+  width: 100%;
+  @include soft-sides(30px);
+  padding-bottom: 1em;
+  transition: .2s ease-in;
+  z-index: 10;
+  @media screen and (max-width: 425px) {
+    @include soft-sides(15px);
+  }
+  &.sticky {
+    background-color: $colorBackBlack;
+    @media screen and (max-width: 600px) {
+      top: 0;
+    }
+  }
+  .wrapper {
+    @include soft-sides(0);
+    max-width: 1290px;
+    &_contacts {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2em;
+      @include soft-ends(1.5625em);
+      border-bottom: 1px solid rgba($color: $colorWhite, $alpha: .6);
+      @media screen and (max-width: 1200px) {
+        column-gap: 1.5em;
+      }
+      @media screen and (max-width: 1024px) {
+        column-gap: 1.25em;
+      }
+      @media screen and (max-width: 768px) {
+        @include soft-ends(1.3125em);
+      }
+    }
+    &_nav {
+      @include soft-ends(1em, 0);
+      @media screen and (max-width: 1024px) {
+        display: none;
+      }
+    }
+  }
+  &__logo {
+    img {
+      @include img(11.25em);
+      @media screen and (max-width: 920px) {
+        max-width: 8.1875em;
+      }
+      @media screen and (max-width: 425px) {
+        max-width: 7.75em;
+      }
+    }
+  }
+  &__nova_post {
+    @include headerBtn;
+    font-weight: 500;
+    transition: .2s ease-in;
+    margin-left: auto;
+    @media screen and (max-width: 1200px) {
+      font-size: 15px;
+    }
+    @media screen and (max-width: 920px) {
+      font-size: 12.7px;
+    }
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+    i {
+      font-size: 1.5625em;
+      color: $colorRed;
+      transition: .2s ease-in;
+    }
+    &:hover {
+      border-color: $colorRed;
+      background-color: $colorRed;
+      i {
+        color: $colorWhite;
+      }
+    }
+  }
+  &__contacts {
+    @include headerBtn;
+    font-size: 1em;
+    @media screen and (max-width: 1200px) {
+      font-size: 15px;
+    }
+    @media screen and (max-width: 920px) {
+      font-size: 12.7px;
+      @include soft-ends(8px, 9px);
+    }
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+    &--phone {
+      position: relative;
+      height: 1em;
+      & > li {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 8px;
+        grid-template-areas: 'phone triangle'
+                             'allPhones allPhones';
+        gap: 0 15px;
+        & > a {
+          grid-area: phone;
+        }
+        a {
+          color: $colorWhite;
+          text-decoration: none;
+          font-size: 1em;
+          font-weight: 500;
+        }
+        .child {
+          grid-area: allPhones;
+          position: relative;
+          overflow-y: hidden;
+          height: 0;
+          transition: .2s ease-in;
+          transition-delay: .2s;
+          li {
+            background: #262525;
+          }
+        }
+        .triangle {
+          grid-area: triangle;
+          display: block;
+          @include triangle(bottom, 8px, 6px);
+          align-self: center;
+          transition: .2s ease-in;
+          cursor: pointer;
+        }
+        &:hover, &.active {
+          row-gap: 10px;
+          .child {
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+          }
+          .triangle {
+            transform: rotate(180deg);
+          }
+        }
+      }
+    }
+    &--messenger {
+      display: grid;
+      grid-template-columns: 24px 20px;
+      justify-content: center;
+      align-items: center;
+      gap: 11px;
+      li {
+        a {
+          @include flexCenter;
+          text-decoration: none;
+          color: $colorRed;
+          border-radius: 10px;
+          transition: .2s ease-in;
+          &.icon-viber {
+            font-size: 21px;
+            @include soft-ends(2px);
+          }
+          &.icon-telegram {
+            font-size: 20px;
+            @include soft-ends(1px);
+          }
+          &:hover {
+            background-color: $colorWhite;
+          }
+        }
+      }
+    }
+  }
+  &__pll {
+    display: flex;
+    gap: 7px;
+    @media screen and (min-width: 1201px) {
+      display: none;
+    }
+    @media screen and (max-width: 768px) {
+      margin-left: auto;
+    }
+    li {
+      a {
+        color: $colorWhite;
+        font-size: 1em;
+        font-weight: 500;
+        line-height: normal;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: .2s ease-in;
+        &:hover {
+          color: $colorRed;
+        }
+      }
+      &.current-lang {
+        a {
+          color: $colorRed;
+        }
+      }
+      &:first-child {
+        a {
+          display: flex;
+          gap: 6px;
+          &:after {
+            content: '';
+            display: block;
+            position: relative;
+            width: 1px;
+            height: 15px;
+            background-color: $colorWhite;
+            top: -1px;
+            align-self: end;
+          }
+        }
+      }
+    }
+  }
+  &__hamburger {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 5px;
+    i {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 10px;
+      background-color: $colorWhite;
+      &:nth-child(2) {
+        width: 12px;
+        transition: .2s ease-in;
+      }
+    }
+    &:hover {
+      i:nth-child(2) {
+        width: 18px;
+      }
+    }
+    @media screen and (min-width: 1025px) {
+      display: none;
+    }
+  }
+  .mobile_navigation {
+    position: fixed;
+    max-width: 360px;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: -9999px;
+    opacity: 0;
+    background-color: $colorBackNavMob;
+    color: $colorWhite;
+    @include soft-ends(3.5625em, 1.75em);
+    @include soft-sides(1.25em);
+    transition: opacity .2s ease-in;
+    overflow-y: auto;
+    .menu {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      @include soft-sides(19px);
+      padding-bottom: 31px;
+      margin-bottom: 31px;
+      border-bottom: 1px solid $colorWhite;
+      a {
+        color: inherit;
+        text-decoration: none;
+        line-height: 1.4;
+      }
+      & > li {
+        & > a {
+          transition: .2s ease-in;
+          font-family: 'Rubik One';
+          font-size: 18px;
+          font-weight: 400;
+          text-transform: uppercase;
+          &:hover {
+            color: $colorRed;
+          }
+        }
+        .sub-menu {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          overflow-y: hidden;
+          height: 0;
+          width: 100%;
+          transition: .2s ease-in;
+          &.active {
+            height: auto;
+            @include soft-ends(12px, 19px);
+          }
+          li {
+            a {
+              font-size: 16px;
+              font-weight: 500;
+            }
+          }
+        }
+        &.menu-item-has-children {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          column-gap: 10px;
+          .triangle {
+            display: inline-block;
+            @include triangle(bottom, 10px, 8px);
+            transition: .2s ease-in;
+            &.active {
+              transform: rotate(180deg);
+            }
+          }
+          & > a {
+            order: -1;
+          }
+        }
+      }
+    }
+    &__phones {
+      @include soft-sides(19px);
+      padding-bottom: 15px;
+      a {
+        color: inherit;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 140%;
+      }
+    }
+    &__messengers {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 13px;
+      @include soft-sides(19px);
+      a {
+        color: $colorRed;
+        text-decoration: none;
+        font-size: 24px;
+        &.icon-facebook {
+          font-size: 21px;
+        }
+      }
+    }
+    &__close {
+      position: absolute;
+      top: 1.5625em;
+      right: .6875em;
+      width: 2em;
+      height: 2em;
+      transition: .2s ease-in;
+    }
+    &.active {
+      right: 0;
+      opacity: 1;
+      .mobile_navigation__close {
+        position: fixed;
+      }
+    }
+  }
+  .header__nav {
+    .menu {
+      display: grid;
+      grid-template-columns: repeat(7, auto);
+      justify-content: space-between;
+      gap: 10px;
+      @media screen and (max-width: 1200px) {
+        grid-template-columns: repeat(5, auto);
+      }
+      li {
+        position: relative;
+        @media screen and (max-width: 1200px) {
+          &.pc {
+            display: none;
+          }
+        }
+        &:not(.pll-parent-menu-item) {
+          a {
+            color: $colorWhite;
+            font-size: 15px;
+            line-height: normal;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-weight: 500;
+            transition: .2s ease-in;
+            @media screen and (max-width: 1200px) {
+              font-size: 14px;
+            }
+          }
+          .sub-menu {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            opacity: 0;
+            left: -9999px;
+            transition: opacity .2s ease-in;
+            transition-delay: .2s;
+            width: max-content;
+            background: linear-gradient(to bottom, transparent .9375em, $colorGray .9375em);
+            @include soft-ends(2.8125em, 1.875em);
+            @include soft-sides(2.5em);
+          }
+          &:hover {
+            & > a {
+              color: $colorRed;
+            }
+            .sub-menu {
+              left: 0;
+              opacity: 1;
+              li {
+                &.tablet {
+                  @media screen and (min-width: 1201px) {
+                    display: none;
+                  }
+                }
+              }
+            }
+          }
+        }
+        &.menu-item-has-children:not(.pll-parent-menu-item) {
+          &:after {
+            content: '';
+            position: relative;
+            display: inline-block;
+            @include triangle(bottom, 8px, 6px);
+            top: -1px;
+            margin-left: 11px;
+            transition: .2s ease-in;
+          }
+          &:hover {
+            &:after {
+              transform: rotate(180deg);
+              border-top-color: $colorRed;
+            }
+          }
+        }
+        &.pll-parent-menu-item {
+          display: flex;
+          gap: 7px;
+          @media screen and (max-width: 1200px) {
+            display: none;
+          }
+          a {
+            display: block;
+            color: $colorWhite;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: normal;
+            text-transform: uppercase;
+            text-decoration: none;
+          }
+          & > a {
+            display: flex;
+            gap: 6px;
+            color: $colorRed;
+            &:after {
+              content: '';
+              display: block;
+              width: 1px;
+              height: 100%;
+              background-color: $colorWhite;
+            }
+          }
+        }
+        &.more {
+          &:hover {
+            @media screen and (max-width: 1440px) {
+              .sub-menu {
+                left: auto;
+                right: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+body:not(.home) {
+  &.category, &.single, &.page {
+    .header {
+      background-color: #1d1d1d;
+      position: sticky;
+      top: 0;
+    }
+  }
+}
+html[lang='ru-RU'] .header .header__nav .menu li.pll-parent-menu-item {
+  & > a {
+    &:after {
+      display: none;
+    }
+  }
+  .sub-menu {
+    order: -1;
+    a {
+      display: flex;
+      gap: 6px;
+      &:after {
+        content: '';
+        display: block;
+        position: relative;
+        width: 1px;
+        height: 15px;
+        background-color: $colorWhite;
+        top: -1px;
+        align-self: end;
+      }
+    }
+  }
+}

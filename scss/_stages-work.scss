@@ -1,0 +1,159 @@
+@import 'settings/var';
+@import 'settings/mixins';
+.stages_work {
+  @include sectionPadding;
+  &__title {
+    @include title;
+  }
+  &__subtitle {
+    @include subTitle;
+    @include soft-ends(25px, 91px);
+    @media screen and (max-width: 500px) {
+      @include soft-ends(16px, 40px);
+    }
+  }
+  &__items {
+    counter-reset: section;
+    ul {
+      @include flexColumn(32px);
+      max-width: 1109px;
+      margin: 0 auto;
+      li {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr 75px 1fr;
+        align-items: center;
+        column-gap: 30px;
+        height: 135px;
+        @media screen and (max-width: 768px) {
+          grid-template-columns: 75px 1fr;
+          column-gap: 20px;
+        }
+        & > span {
+          order: -1;
+          display: block;
+          @media screen and (max-width: 768px) {
+            display: none;
+          }
+        }
+        p {
+          order: 2;
+          font-size: 20px;
+          font-weight: 500;
+          line-height: 1.5;
+          @media screen and (max-width: 950px) {
+            font-size: 18px;
+          }
+          @media screen and (max-width: 500px) {
+            font-size: 16px;
+          }
+          span {
+            color: $colorRed;
+          }
+        }
+        &:after {
+          order: 1;
+          counter-increment: section;
+          content: counter(section);
+          color: $colorWhite;
+          font-family: 'Rubik One';
+          font-size: 40px;
+          font-weight: 400;
+          line-height: 1.4;
+          @include flexCenter;
+          width: 75px;
+          height: 75px;
+          border-radius: 50%;
+          background: url('../img/back-number.webp') 0 0;
+          background-size: 75px 150px;
+        }
+        &:nth-child(2n) {
+          @media screen and (min-width: 769px) {
+            span {
+              order: 2;
+            }
+            p {
+              order: -1;
+              text-align: right;
+            }
+          }
+        }
+        &:not(:last-child) {
+          &:before {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 1px;
+            height: 92px;
+            left: 0;
+            right: 0;
+            bottom: -62px;
+            margin: 0 auto;
+            background: url('../img/back-lane.webp') 0 0;
+            background-size: 1px 184px;
+            @media screen and (max-width: 768px) {
+              right: auto;
+              margin: 0;
+              left: 38px;
+            }
+          }
+        }
+        &:last-child {
+          &:after {
+            position: relative;
+            top: -5px;
+          }
+        }
+      }
+      &.active {
+        @media screen and (min-width: 1025px) {
+          li {
+            &:before {
+              animation-name: back;
+              animation-duration: .5s;
+              animation-fill-mode: forwards;
+            }
+            &:after {
+              animation-name: back;
+              animation-duration: .5s;
+              animation-fill-mode: forwards;
+            }
+            @for $i from 1 through 7 {
+              &:nth-child(#{$i}) {
+                &:before {
+                  animation-delay: #{$i}s;
+                }
+                &:after {
+                  animation-delay: calc(.5s + #{$i}s - 1s);
+                }
+              }
+            }
+          }
+        }
+        @media screen and (max-width: 1024px) {
+          li.active {
+            &:before {
+              animation-name: back;
+              animation-duration: .5s;
+              animation-fill-mode: forwards;
+            }
+            &:after {
+              animation-name: back;
+              animation-duration: .5s;
+              animation-fill-mode: forwards;
+              animation-delay: .5s;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@keyframes back {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 -100%;
+  }
+}

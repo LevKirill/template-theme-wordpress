@@ -1,0 +1,32 @@
+@import 'settings/var';
+@import 'settings/mixins';
+.page_nova_post {
+  &__content {
+    .article_profiservice {
+      &__block {
+        h2 {
+          font-size: 36px;
+          @media screen and (max-width: 500px) {
+            font-size: 30px;
+          }
+          @media screen and (max-width: 425px) {
+            font-size: 25px;
+          }
+        }
+      }
+    }
+    .article_our_services {
+      .block_title {
+        h3 {
+          font-size: 36px;
+          @media screen and (max-width: 500px) {
+            font-size: 30px;
+          }
+          @media screen and (max-width: 425px) {
+            font-size: 25px;
+          }
+        }
+      }
+    }
+  }
+}

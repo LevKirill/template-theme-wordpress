@@ -1,0 +1,284 @@
+@import 'var';
+
+@mixin font ($name, $fileName, $fontWeight: 400, $fontStyle: normal) {
+  @font-face {
+    font-family: $name;
+    src: url('../fonts/#{$fileName}.woff') format('woff'),
+    url('../fonts/#{$fileName}.woff2') format('woff2');
+    font-weight: $fontWeight;
+    font-style: $fontStyle;
+  }
+}
+
+@mixin img ($maxWidth: 100%, $height: auto) {
+  max-width: $maxWidth;
+  width: 100%;
+  height: $height;
+  @if $height != auto {
+    object-fit: cover;
+  }
+}
+
+@mixin soft-ends ($top, $bottom: $top) {padding: {top: $top; bottom: $bottom;}}
+@mixin soft-sides ($left, $right: $left) {padding: {left: $left; right: $right;}}
+
+@mixin margin-ends ($top, $bottom: $top) {margin: {top: $top; bottom: $bottom;}}
+@mixin margin-sides ($left, $right: $left) {margin: {left: $left; right: $right;}}
+
+@mixin headerBtn ($gap: .9375em, $paddingEnds: .8125em, $paddingSides: 1.875em) {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: $gap;
+  border-radius: 1.875em;
+  border: 1px solid rgba($color: $colorWhite, $alpha: .6);
+  @include soft-ends($paddingEnds);
+  @include soft-sides($paddingSides);
+  color: $colorWhite;
+  text-decoration: none;
+}
+
+@mixin triangle ($direction, $width, $height, $color: $colorWhite) {
+  width: 0;
+  height: 0;
+  border: {
+    @if $direction == top {
+      bottom: $height solid $color;
+      right: calc($width / 2) solid transparent;
+      left: calc($width / 2) solid transparent;
+    }
+    @else if $direction == right {
+      left: $width solid $color;
+      top: calc($height / 2) solid transparent;
+      bottom: calc($height / 2) solid transparent;
+    }
+    @else if $direction == bottom {
+      top: $height solid $color;
+      right: calc($width / 2) solid transparent;
+      left: calc($width / 2) solid transparent;
+    }
+    @else if $direction == left {
+      right: $width solid $color;
+      top: calc($height / 2) solid transparent;
+      bottom: calc($height / 2) solid transparent;
+    }
+  }
+}
+@mixin ulNumber {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 29px;
+  counter-reset: section;
+  @media screen and (min-width: 1025px) {
+    grid-auto-rows: 1fr;
+  }
+  @media screen and (max-width: 425px) {
+    row-gap: 20px;
+  }
+  & > li {
+    display: none;
+  }
+  & > li:nth-child(-n + 9) {
+    position: relative;
+    @include flexColumn(33px);
+    @include soft-ends(47px);
+    @include soft-sides(47px, 275px);
+    color: $colorWhite;
+    background-color: $colorGray;
+    border-radius: 30px;
+    @media screen and (max-width: 1024px) {
+      padding-right: 210px;
+      min-height: 255px;
+      br {
+        display: none;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      @include soft-sides(30px, 150px);
+    }
+    @media screen and (max-width: 600px) {
+      padding-right: 30px;
+      min-height: auto;
+      gap: 20px;
+    }
+    @media screen and (max-width: 425px) {
+      @include soft-sides(20px);
+      @include soft-ends(30px);
+    }
+    & > b, & > strong {
+      font-family: "Rubik One";
+      font-size: 24px;
+      font-weight: 400;
+      line-height: normal;
+      text-transform: uppercase;
+      @media screen and (max-width: 600px) {
+        font-size: 20px;
+      }
+    }
+    ul {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.6;
+      b, strong {
+        color: $colorRed;
+      }
+    }
+    &:after {
+      counter-increment: section;
+      content: counter(section);
+      display: block;
+      position: absolute;
+      color: rgba($color: $colorWhite, $alpha: .03);
+      font-family: "Rubik One";
+      font-size: 300px;
+      height: 1em;
+      width: .78667em;
+      font-weight: 400;
+      line-height: 1.1;
+      right: 36px;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      z-index: 1;
+      @media screen and (max-width: 1024px) {
+        font-size: 255px;
+        right: 5px;
+      }
+      @media screen and (max-width: 768px) {
+        font-size: 180px;
+      }
+      @media screen and (max-width: 600px) {
+        display: none;
+      }
+    }
+  }
+}
+
+@mixin flexCenter ($display: flex) {
+  display: $display;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flexColumn ($gap) {
+  display: flex;
+  flex-direction: column;
+  @if $gap != 0 {
+    gap: $gap;
+  }
+}
+
+@mixin pll {
+  display: flex;
+  gap: 7px;
+  a {
+    display: block;
+    color: $colorWhite;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  & > a {
+    display: flex;
+    gap: 6px;
+    color: $colorRed;
+    &:after {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 100%;
+      background-color: $colorWhite;
+    }
+  }
+}
+@mixin absoluteCenter ($top: 0, $bottom: 0, $left: 0, $right: 0) {
+  position: absolute;
+  top: $top;
+  bottom: $bottom;
+  left: $left;
+  right: $right;
+  margin: auto;
+}
+
+@mixin sectionPadding {
+  @include soft-ends(130px);
+  @media screen and (max-width: 1024px) {
+    @include soft-ends(100px);
+  }
+  @media screen and (max-width: 768px) {
+    @include soft-ends(80px);
+  }
+  @media screen and (max-width: 425px) {
+    @include soft-ends(60px);
+  }
+}
+@mixin title ($color: $colorRed, $lineHeight: normal) {
+  color: $color;
+  font-family: "Rubik One";
+  font-size: 24px;
+  font-weight: 400;
+  line-height: $lineHeight;
+  text-transform: uppercase;
+  @media screen and (max-width: 500px) {
+    font-size: 20px;
+  }
+}
+@mixin subTitle ($color: black, $size: 48px) {
+  @if $color == black {
+    color: $colorBackBlack;
+  } @else if $color == white {
+    color: $colorWhite;
+  } @else {
+    color: $color;
+  }
+  font-family: "Rubik One";
+  font-size: $size;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+  @media screen and (max-width: 1024px) {
+    font-size: calc($size * .84);
+  }
+  @media screen and (max-width: 500px) {
+    font-size: calc($size * .625);
+  }
+  @media screen and (max-width: 425px) {
+    font-size: calc($size * .5208);
+  }
+}
+@mixin heightProportional ($height: 100%) {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: $height;
+  img, iframe {
+    @include absoluteCenter;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+@mixin btn ($colorBorder: $colorRed, $colorText: $colorGray, $colorTextHover: $colorWhite, $fonts: 16px) {
+  display: inline-block;
+  color: $colorText;
+  font-size: $fonts;
+  font-weight: 500;
+  line-height: normal;
+  border-radius: 1.875em;
+  border: 1px solid $colorBorder;
+  text-align: center;
+  text-decoration: none;
+  transition: .2s ease-in;
+  &:hover {
+    background-color: $colorRed;
+    border-color: $colorRed;
+    color: $colorWhite;
+  }
+}
+@mixin animate ($name: titleAnimation, $time: 5s, $iteration: infinite) {
+  animation-name: $name;
+  animation-duration: $time;
+  animation-iteration-count: $iteration;
+  animation-timing-function: linear;
+}
