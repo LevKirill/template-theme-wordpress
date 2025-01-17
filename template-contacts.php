@@ -32,7 +32,7 @@
                   echo '<li>' . $step[pll__('step_uk')] . '</li>';
                 }
                 echo '</ul>';
-                echo '<a href="' . $howFind['link_google_maps'] . '" class="link_google_map" target="_blank">
+                echo '<a href="' . $howFind['link_google_maps'] . '" class="link_google_map" target="_blank" rel="nofollow">
                         <svg>
                           <use xlink:href="' . get_template_directory_uri() . '/img/sprite.svg#google-maps"></use>
                         </svg>
@@ -67,8 +67,8 @@
             <?php if($messengers): ?>
               <div class="list_messengers">
                 <div class="list_messengers__icons">
-                  <a href="<?php echo $messengers['viber'] ?>" class="icon-viber" target="_blank"></a>
-                  <a href="<?php echo $messengers['telegram'] ?>" class="icon-telegram" target="_blank"></a>
+                  <a href="viber://chat?number=<?php echo $messengers['viber'] ?>" class="icon-viber" target="_blank"></a>
+                  <a href="https://t.me/<?php echo $messengers['telegram'] ?>" class="icon-telegram" target="_blank"></a>
                 </div>
                 <p>&dash;&nbsp;<?php pll_e("ви можете також зв'язатися з нами в меседжерах"); ?></p>
               </div>
@@ -113,6 +113,11 @@
         </div>
       </div>
     </section>
+	  <?php if (get_field('seo-text')): ?>
+        <div class="seo_text">
+          <div class="wrapper"><?php the_field('seo-text');?></div>
+        </div>
+      <?php endif; ?>
   </main>
 <?php
   get_footer();

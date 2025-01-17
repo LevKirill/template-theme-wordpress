@@ -33,16 +33,19 @@ const scrollChange = 1;
 const add_class_on_scroll = () => header.classList.add("sticky");
 const remove_class_on_scroll = () => header.classList.remove("sticky");
 
-window.addEventListener('scroll', function () {
-  scrollpos = window.scrollY;
+function scrollHeader (actionType) {
+  window.addEventListener(actionType, function () {
+    scrollpos = window.scrollY;
 
-  if (scrollpos >= scrollChange) {
-    add_class_on_scroll()
-  } else {
-    remove_class_on_scroll()
-  }
-
-});
+    if (scrollpos >= scrollChange) {
+      add_class_on_scroll()
+    } else {
+      remove_class_on_scroll()
+    }
+  });
+}
+scrollHeader('scroll');
+scrollHeader('load');
 
 // WOW Animation
 let wow = new WOW({

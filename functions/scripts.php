@@ -10,13 +10,13 @@
     wp_enqueue_style('era-style', get_stylesheet_uri(), array(), '1_01');
     wp_style_add_data('era-style', 'rtl', 'replace');
     if (is_front_page()) {
-      wp_enqueue_style('era-homeCss', get_template_directory_uri() . '/css/home.css', array(), '');
+      wp_enqueue_style('era-homeCss', get_template_directory_uri() . '/css/home.css?ver_1.01', array(), '');
     } else {
-      wp_enqueue_style('era-homeCss', get_template_directory_uri() . '/css/pages.css', array(), '');
+      wp_enqueue_style('era-homeCss', get_template_directory_uri() . '/css/pages.css?ver_1.01', array(), '');
     }
     wp_enqueue_script('era-wow', get_template_directory_uri() . '/js/wow.min.js', array(), '', false);
     wp_enqueue_script('era-fancybox', get_template_directory_uri() . '/js/fancybox.umd.js', array(), '', false);
-    wp_enqueue_script('era-mainJs', get_template_directory_uri() . '/js/main.min.js', array(), '', true);
+    wp_enqueue_script('era-mainJs', get_template_directory_uri() . '/js/main.min.js?ver_1.01', array(), '', true);
   }
 
   add_action('wp_enqueue_scripts', 'my_update_jquery');

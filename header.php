@@ -6,6 +6,8 @@
    * @subpackage Profi Service
    * @since Profi Service 1.0
    */
+  $phones = get_field('contacts_phone', 'option');
+  $messengers = get_field('messengers', 'option');
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -14,8 +16,98 @@
   <meta name="viewport" content="width=device-width"/>
   <meta name="description" content="<?php bloginfo('description') ?>"/>
   <?php wp_head(); ?>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Organization",
+      "name": "<?php pll_e('Назва організації'); ?>",
+      "url": "<?php echo get_site_url() . pll__('slug'); ?>",
+      "logo": "<?php echo get_template_directory_uri(); ?>/img/logo.png",
+      "telephone": "<?php pll_e('Телефон'); ?>",
+      "image": [
+        "<?php echo get_site_url() ?>/wp-content/uploads/2024/10/camera-repair-full-4.webp",
+        "<?php echo get_site_url() ?>/wp-content/uploads/2024/10/camera-repair-full-27.webp",
+        "<?php echo get_site_url() ?>/wp-content/uploads/2024/10/camera-repair-full-32.webp",
+        "<?php echo get_site_url() ?>/wp-content/uploads/2024/10/camera-repair-full-34.webp"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "<?php pll_e('Київ'); ?>",
+        "addressCountry": "<?php pll_e('Україна'); ?>",
+        "addressRegion": "<?php pll_e('Київська область'); ?>",
+        "postalCode": "<?php pll_e('Індекс'); ?>",
+        "streetAddress": "<?php pll_e('Адреса'); ?>"
+      },
+      "sameAs": [
+        "<?php echo $messengers['instagram']; ?>",
+        "<?php echo $messengers['facebook']; ?>"
+      ]
+    }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXL9R8GRL0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-XXL9R8GRL0');
+  </script>
+  <meta name="google-site-verification" content="fj6s0LOPU7XZkfaA4y8Bx-pcdpKfL4JdTSDEHrUMvnU"/>
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod ?
+              n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '554833247193676');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+                 src="https://www.facebook.com/tr?id=554833247193676&ev=PageView&noscript=1"
+    /></noscript>
+  <!-- End Meta Pixel Code -->
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+        'gtm.start':
+              new Date().getTime(), event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-M98PNN6');</script>
+  <!-- End Google Tag Manager -->
 </head>
-<body id="link-top" <?php body_class(); ?>>
+<body itemtype="https://schema.org/WebPage" id="link-top" <?php body_class(); ?>>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M98PNN6"
+          height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
 <?php
   //  Перевірка чи ввімкнено модальне вікно
   if (get_field('popup_on', 'option')) {
@@ -39,10 +131,11 @@
     </div>
     <a href="#" class="header__nova_post popup_np"><span><? pll_e('Нова пошта'); ?></span><i class="icon-novapost"></i></a>
     <div class="header__contacts">
+      <svg class="header__contacts--icon_phone">
+        <use xlink:href="<?= get_template_directory_uri(); ?>/img/sprite.svg?ver_1.2#icon-phone"></use>
+      </svg>
       <ul class="header__contacts--phone">
         <?php
-          $phones = get_field('contacts_phone', 'option');
-          $messengers = get_field('messengers', 'option');
           if ($phones):
             ?>
             <li>
@@ -67,11 +160,11 @@
       <ul class="header__contacts--messenger">
         <li>
           <a class="icon-viber" target="_blank"
-             href="viber://chat?number=%2B<?php echo preg_replace('![^0-9]+!', '', get_field('viber', 'option')); ?>"></a>
+             href="viber://chat?number=%2B<?php echo preg_replace('![^0-9]+!', '', $messengers['viber']); ?>"></a>
         </li>
         <li>
           <a class="icon-telegram" target="_blank"
-             href="https://t.me/<?php the_field('telegram', 'option'); ?>"></a>
+             href="https://t.me/<?php echo $messengers['telegram']; ?>"></a>
         </li>
       </ul>
     </div>
@@ -131,3 +224,14 @@
     </svg>
   </nav>
 </header>
+<script>
+  $('.header__contacts--icon_phone').on('click', function(e){
+    e.preventDefault();
+    $('.header__contacts--phone').toggleClass('active');
+  });
+  if ($(window).width() > 1024) {
+    $('.mobile_navigation').remove();
+  } else {
+    $('.header__nav').remove();
+  }
+</script>

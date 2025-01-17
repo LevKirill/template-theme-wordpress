@@ -92,11 +92,45 @@
       @include soft-ends(8px, 9px);
     }
     @media screen and (max-width: 768px) {
-      display: none;
+      margin-left: auto;
+    }
+    @media screen and (max-width: 600px) {
+      @include soft-ends(10px);
+      @include soft-sides(15px);
+    }
+    @media screen and (max-width: 479px) {
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &--icon_phone {
+      width: 24px;
+      height: 24px;
+      @media screen and (min-width: 480px) {
+        display: none;
+      }
     }
     &--phone {
       position: relative;
       height: 1em;
+      @media screen and (max-width: 479px) {
+        display: none;
+        height: auto;
+        position: absolute;
+        bottom: -16px;
+        right: 70px;
+        background: #19181e;
+        padding: 10px;
+        &.active {
+          display: block;
+        }
+      }
+      @media screen and (max-width: 425px) {
+        right: 54px;
+      }
       & > li {
         position: relative;
         display: grid;
@@ -104,6 +138,14 @@
         grid-template-areas: 'phone triangle'
                              'allPhones allPhones';
         gap: 0 15px;
+        @media screen and (max-width: 600px) {
+          column-gap: 10px;
+        }
+        @media screen and (max-width: 479px) {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+        }
         & > a {
           grid-area: phone;
         }
@@ -112,6 +154,10 @@
           text-decoration: none;
           font-size: 1em;
           font-weight: 500;
+          @media screen and (min-width: 1201px) {
+            cursor: text;
+            pointer-events: none;
+          }
         }
         .child {
           grid-area: allPhones;
@@ -120,8 +166,16 @@
           height: 0;
           transition: .2s ease-in;
           transition-delay: .2s;
-          li {
-            background: #262525;
+          @media screen and (max-width: 479px) {
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+          }
+          @media screen and (min-width: 480px) {
+            li {
+              background: #262525;
+            }
           }
         }
         .triangle {
@@ -131,17 +185,22 @@
           align-self: center;
           transition: .2s ease-in;
           cursor: pointer;
-        }
-        &:hover, &.active {
-          row-gap: 10px;
-          .child {
-            height: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+          @media screen and (max-width: 479px) {
+            display: none;
           }
-          .triangle {
-            transform: rotate(180deg);
+        }
+        @media screen and (min-width: 480px) {
+          &:hover, &.active {
+            row-gap: 10px;
+            .child {
+              height: auto;
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+            }
+            .triangle {
+              transform: rotate(180deg);
+            }
           }
         }
       }
@@ -152,6 +211,9 @@
       justify-content: center;
       align-items: center;
       gap: 11px;
+      @media screen and (max-width: 600px) {
+        display: none;
+      }
       li {
         a {
           @include flexCenter;
@@ -179,9 +241,6 @@
     gap: 7px;
     @media screen and (min-width: 1201px) {
       display: none;
-    }
-    @media screen and (max-width: 768px) {
-      margin-left: auto;
     }
     li {
       a {
@@ -263,7 +322,7 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-      @include soft-sides(19px);
+      padding-left: 19px;
       padding-bottom: 31px;
       margin-bottom: 31px;
       border-bottom: 1px solid $colorWhite;

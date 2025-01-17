@@ -8,6 +8,7 @@
    */
   $phones = get_field('contacts_phone', 'option');
   $messengers = get_field('messengers', 'option');
+  $howFind = get_field('how_find', 'option');
 ?>
 <footer class="footer">
   <div class="wrapper">
@@ -49,9 +50,11 @@
             <?php endforeach; ?>
           <?php endif; ?>
         </ul>
-        <p class="footer__contacts--address"><?php pll_e('Київ, пров. Ярославський 4 (метро Контактна площа)'); ?></p>
+        <a href="<?= $howFind['link_google_maps'];?>" target="_blank" class="footer__contacts--address" rel="nofollow">
+          <?php pll_e('Київ, пров. Ярославський 4 (метро Контактна площа)'); ?>
+        </a>
         <p class="footer__contacts--working_time"><?php pll_e('Режим роботи'); ?>:<br>
-          <?php pll_e('Пн-Пт: з 11:00 до 18:00.'); ?></p>
+          <?php pll_e('Пн-Пт: з 11:00 до 18:00'); ?></p>
         <ul class="footer__contacts--messengers">
           <?php
             if ($messengers['viber']) {

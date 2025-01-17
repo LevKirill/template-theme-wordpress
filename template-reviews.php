@@ -77,6 +77,21 @@
 
         $(this).find(' .gr-inner-header').prepend($reviewNameAuthor);
       });
+
+      //   Micropagination
+      $(function () {
+        $('.g-review').attr('itemscope', '').attr('itemtype', 'https://schema.org/Review');
+        $('.gr-inner-header').attr('itemprop', 'author').attr('itemtype', 'https://schema.org/Person');
+        $('.gr-inner-header > a').attr('itemprop', 'name');
+        $('.gr-inner-body').attr('itemprop', 'reviewBody');
+        $('.gr-inner-header > p .stars-wrapper').each(function (index) {
+          $(this).attr('itemprop', 'reviewRating').attr('itemscope', '')
+                .attr('itemtype', 'https://schema.org/Rating').append('<meta itemprop="worstRating" content="1">')
+                .append('<meta itemprop="ratingValue" content="' + $(this).find(' img').length +
+                      '"/>')
+                .append('<meta itemprop="bestRating" content="5"/>');
+        });
+      });
     </script>
   </main>
 <?php

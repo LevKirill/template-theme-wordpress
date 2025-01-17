@@ -20,7 +20,18 @@
         <h2 class="page_faq__container--title"><?php pll_e('Нас часто запитують');?></h2>
         <h3 class="page_faq__container--subtitle"><?php pll_e('Відповідаємо');?>:</h3>
         <div class="page_faq__container--block">
-          <?php the_content();?>
+          <?php if( have_rows('faq') ):?>
+            <ul class="wp-block-list" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+              <?php while ( have_rows('faq') ) : the_row();?>
+                <li itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+                  <span itemprop="name"><?php the_sub_field('entity');?></span>
+                  <ul class="wp-block-list" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <li itemprop="text"><?php the_sub_field('answer');?></li>
+                  </ul>
+                </li>
+              <?php endwhile;?>
+            </ul>
+          <?php endif;?>
         </div>
       </div>
     </section>
@@ -28,7 +39,15 @@
       $('.page_faq__container--block > .wp-block-list > li').on('click', function () {
         $(this).toggleClass('active');
       });
+      $(function () {
+        $('html').attr('itemscope', '').attr('itemtype', 'https://schema.org/FAQPage');
+      });
     </script>
+	  <?php if (get_field('seo-text')): ?>
+        <div class="seo_text">
+          <div class="wrapper"><?php the_field('seo-text');?></div>
+        </div>
+      <?php endif; ?>
   </main>
 <?php
   get_footer();

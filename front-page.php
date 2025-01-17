@@ -22,9 +22,10 @@
         <p class="main_screen__desc wow animate__fadeIn">
           <?php pll_e('Діагностика'); ?> <span><?php pll_e('безкоштовно'); ?>!</span>
         </p>
-        <a href="https://t.me/<?php echo $messengers['telegram'];?>" target="_blank"
-           class="main_screen__btn wow animate__fadeInUp"><?php pll_e('Отримати безкоштовну консультацію');
-          ?></a>
+        <a href="viber://chat?number=%2B<?php echo preg_replace('![^0-9]+!', '', $messengers['viber']); ?>"
+           target="_blank" class="main_screen__btn wow animate__fadeInUp">
+          <?php pll_e('Отримати безкоштовну консультацію'); ?>
+        </a>
       </div>
     </section>
     <section id="linkAboutUs" class="about_us">
@@ -291,8 +292,10 @@
         <h2 class="questions__title wow animate__bounceInDown"><?php pll_e('Маєте запитання?'); ?></h2>
         <div class="questions__container">
           <h3 class="questions__container--subtitle  wow animate__bounceInLeft"><?php pll_e("Зв'яжіться з нами!"); ?></h3>
-          <a href="https://t.me/<?php echo $messengers['telegram'];?>" target="_blank"
-             class="questions__container--btn  wow animate__bounceInRight"><?php pll_e('Отримати безкоштовну консультацію'); ?></a>
+          <a href="viber://chat?number=%2B<?php echo preg_replace('![^0-9]+!', '', $messengers['viber']); ?>"
+             target="_blank" class="questions__container--btn  wow animate__bounceInRight">
+            <?php pll_e('Отримати безкоштовну консультацію'); ?>
+          </a>
         </div>
       </div>
     </section>

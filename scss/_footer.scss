@@ -144,6 +144,10 @@
         font-weight: 500;
         line-height: 1.4;
         text-decoration: none;
+        @media screen and (min-width: 1201px) {
+          cursor: text;
+          pointer-events: none;
+        }
         @media screen and (max-width: 1200px) {
           font-size: 18px;
         }
@@ -156,6 +160,14 @@
       max-width: 15.444em;
       @media screen and (max-width: 1200px) {
         font-size: 16px;
+      }
+    }
+    &--address {
+      text-decoration: none;
+      color: inherit;
+      transition: .2s ease-in;
+      &:hover {
+        color: $colorRed;
       }
     }
     &--messengers {

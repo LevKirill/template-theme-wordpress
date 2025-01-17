@@ -20,6 +20,11 @@
         <div class="content"><?php the_content();?></div>
       </div>
     </section>
+	  <?php if (get_field('seo-text')): ?>
+        <div class="seo_text">
+          <div class="wrapper"><?php the_field('seo-text');?></div>
+        </div>
+      <?php endif; ?>
   </main>
 <?php
   get_footer();

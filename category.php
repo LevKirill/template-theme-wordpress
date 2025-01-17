@@ -11,14 +11,16 @@
   <section class="category_page__content" role="main">
     <div class="wrapper">
       <?php if (have_posts()) : ?>
-        <div class="items">
+        <div class="items" itemscope="itemscope" itemtype="https://schema.org/Blog">
           <?php while (have_posts()) : the_post(); ?>
             <div class="item">
-              <div class="image_new"><?php the_post_thumbnail(); ?></div>
+              <div class="image_new" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                <?php the_post_thumbnail(); ?>
+              </div>
               <div class="short_desc">
-                <h3><?php the_title(); ?></h3>
-                <div class="excerpt"><?php the_excerpt(); ?></div>
-                <a href="<?php the_permalink(); ?>" class="more"><?php pll_e('Читати'); ?></a>
+                <h3 itemprop="headline"><?php the_title(); ?></h3>
+                <div class="excerpt" itemprop="description"><?php the_excerpt(); ?></div>
+                <a href="<?php the_permalink(); ?>" class="more" itemprop="mainEntityOfPage"><?php pll_e('Читати'); ?></a>
               </div>
             </div>
           <?php endwhile;

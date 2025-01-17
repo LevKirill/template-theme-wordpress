@@ -44,7 +44,8 @@
           <div class="block_title">
             <h3><?php echo $howRepaired['title']; ?></h3>
             <div class="block_title__link">
-              <a href="https://t.me/<?php echo $messengers['telegram'];?>" target="_blank">
+              <a href="viber://chat?number=%2B<?php echo preg_replace('![^0-9]+!', '', $messengers['viber']); ?>"
+                 target="_blank">
                 <?php pll_e('Отримати безкоштовну консультацію'); ?>
               </a>
             </div>
@@ -169,6 +170,11 @@
         </div>
       </article>
     </section>
+	  <?php if (get_field('seo-text')): ?>
+        <div class="seo_text">
+          <div class="wrapper"><?php the_field('seo-text');?></div>
+        </div>
+      <?php endif; ?>
   </main>
 <?php
   get_footer();

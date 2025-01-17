@@ -51,7 +51,8 @@
           <div class="block_title">
             <h3><?php the_field('title_our_services'); ?></h3>
             <div class="block_title__link">
-              <a href="https://t.me/<?php echo $messengers['telegram'];?>" target="_blank">
+              <a href="viber://chat?number=%2B<?php echo preg_replace('![^0-9]+!', '', $messengers['viber']); ?>"
+                 target="_blank">
                 <?php pll_e('Отримати безкоштовну консультацію'); ?>
               </a>
             </div>
